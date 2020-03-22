@@ -28,6 +28,11 @@ export HADOOP_HOME=~/hadoop  # 这里修改为hadoop的安装路径即可
 export PATH=$PATH:$HADOOP_HOME/sbin:$HADOOP_HOME/bin # 这里将运行hadoop时需要的脚本加入path中
 ```
 
+修改 hadoop/etc/hadoop/hadoop-env.sh 中的 export JAVA_HOME 修改为
+```sh
+export JAVA_HOME=$(readlink -f /usr/bin/java | sed "s:bin/java::")
+```
+
 ## 配置各个机器之间的ssh免密登录
 因为hdfs的启动集群脚本会通过ssh的方式去管理其他的机器，各个机器之间能够免密登录能够方便操作。在每台机器上执行
 ```sh
@@ -71,4 +76,18 @@ start-dfs.sh
 stop-dfs.sh
 ```
 
+## 检查是否安装完毕
+在 hadoop/logs 路径下会有 dataNode, nameNode, journalNode的启动日志，通过
+```sh
+tail -f xxx.log
+```
+可以查看集群启动过程中是否遇到问题。确认集群启动没有问题以后可以通过
+```sh
+hdfs haadmin -clusterid <cluster> -getServiceState <nameNode>
+```
+查看启动的各个namenode的状态。确认namenode启动无问题以后可以通过
+```sh
+hdfs dfs -fs hdfs://<NameNodeAddr> -ls /
+```
+检查是hdfs是否正常工作
 
