@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!--
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License. See accompanying LICENSE file.
+-->
+
+<!-- Put site-specific property overrides in this file. -->
+
+<configuration>
+  <property>
+    <name>dfs.block.access.token.enable</name>
+    <value>true</value>
+  </property>
+  <!-- nameNode configuration -->
+  <property>
+    <name>dfs.namenode.name.dir</name>
+    <value>/home/hadoop/data/nameNode</value>
+  </property>
+  <property>
+    <name>dfs.namenode.kerberos.principal</name>
+    <value>nn/192.168.1.221@CW.COM</value>
+  </property>
+  <property>
+    <name>dfs.namenode.keytab.file</name>
+    <value>/home/hadoop/security/nn.service.keytab</value>
+  </property>
+
+  <!-- dataNode configuration -->
+  <property>
+    <name>dfs.datanode.data.dir</name>
+    <value>/home/hadoop/data/dataNode</value>
+  </property>
+  <property>
+    <name>dfs.datanode.kerberos.principal</name>
+    <value>dn/192.168.1.221@CW.COM</value>
+  </property>
+  <property>
+    <name>dfs.datanode.keytab.file</name>
+    <value>/home/hadoop/security/dn.service.keytab</value>
+  </property>
+  <property>
+    <name>dfs.datanode.data.dir.perm</name>
+    <value>700</value>
+  </property>
+
+  <!-- sasl configuration -->
+  <property>
+    <name>dfs.datanode.address</name>
+    <value>0.0.0.0:61004</value>
+  </property>
+  <property>
+    <name>dfs.datanode.http.address</name>
+    <value>0.0.0.0:61006</value>
+  </property>
+  <property>
+    <name>dfs.datanode.https.address</name>
+    <value>0.0.0.0:50480</value>
+  </property>
+  <property>
+    <name>dfs.http.policy</name>
+    <value>HTTPS_ONLY</value>
+  </property>
+  <property>
+    <name>dfs.data.transfer.protection</name>
+    <value>integrity</value>
+  </property>
+
+  <!-- http principal configuration  -->
+  <property>
+    <name>dfs.web.authentication.kerberos.principal</name>
+    <value>HTTP/192.168.1.221@CW.COM</value>
+  </property>
+  <property>
+    <name>dfs.web.authentication.kerberos.keytab</name>
+    <value>/home/hadoop/security/HTTP.service.keytab</value>
+  </property>
+  
+</configuration>
+
+
+
+
+
+
+
+
